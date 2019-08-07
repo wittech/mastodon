@@ -2,11 +2,21 @@
 
 #https://zhuanlan.zhihu.com/p/46442595
 
+#防火墙添加端口
+firewall-cmd --zone=public --add-port=80/tcp --permanent
+firewall-cmd --zone=public --add-port=5432/tcp --permanent
+firewall-cmd --zone=public --add-port=6379/tcp --permanent
+firewall-cmd --zone=public --add-port=9200/tcp --permanent
+firewall-cmd --zone=public --add-port=3000/tcp --permanent
+firewall-cmd --zone=public --add-port=4000/tcp --permanent
+firewall-cmd --reload
+
 chown -R 991:991 public
 
 cp .env.production.sample .env.production
 
 chmod 777 -R /home/mastodon
+
 
 docker-compose up
 

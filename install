@@ -1,0 +1,15 @@
+#! /usr/bin/bash
+
+#https://zhuanlan.zhihu.com/p/46442595
+
+chown -R 991:991 public
+
+cp .env.production.sample .env.production
+
+# docker-compose run --rm web bundle exec rake mastodon:setup
+chown -R 991:991 /home/mastodon/public/system
+
+chmod 777 -R /home/mastodon
+# chmod 777 -R /home/mastodon/elasticsearch
+# chmod 777 -R /home/mastodon/redis
+

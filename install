@@ -17,10 +17,14 @@ cp .env.production.sample .env.production
 
 chmod 777 -R /home/mastodon
 
+npm install
 
 docker-compose up
 
 # docker-compose run --rm web bundle exec rake mastodon:setup
+# 修改了代码后需要重新编译
+# docker-compose run --rm web RAILS_ENV=production bundle exec rails assets:precompile
+
 chown -R 991:991 /home/mastodon/public/system
 
 

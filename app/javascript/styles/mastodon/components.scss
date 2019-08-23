@@ -503,8 +503,20 @@
   .autosuggest-hashtag {
     justify-content: space-between;
 
+    &__name {
+      flex: 1 1 auto;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
     strong {
       font-weight: 500;
+    }
+
+    &__uses {
+      flex: 0 0 auto;
+      width: 80px;
+      text-align: right;
     }
   }
 
@@ -2753,6 +2765,15 @@ a.account__display-name {
     animation: fade 150ms linear;
     margin-top: 10px;
 
+    h4 {
+      font-size: 12px;
+      text-transform: uppercase;
+      color: $darker-text-color;
+      padding: 10px;
+      font-weight: 500;
+      border-bottom: 1px solid lighten($ui-base-color, 8%);
+    }
+
     @media screen and (max-height: 810px) {
       .trends__item:nth-child(3) {
         display: none;
@@ -4770,6 +4791,7 @@ a.status-card.compact:hover {
   position: absolute;
   top: 0;
   left: 0;
+  z-index: 9999;
 }
 
 .media-gallery__gifv__label {

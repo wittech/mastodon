@@ -15,7 +15,7 @@
 #  last_status_at      :datetime
 #  max_score           :float
 #  max_score_at        :datetime
-#
+#  https://blog.csdn.net/cysear/article/details/80435756 常用符号
 
 class Tag < ApplicationRecord
   has_and_belongs_to_many :statuses
@@ -25,7 +25,7 @@ class Tag < ApplicationRecord
   has_many :featured_tags, dependent: :destroy, inverse_of: :tag
   has_one :account_tag_stat, dependent: :destroy
 
-  HASHTAG_SEPARATORS = "_\u00B7\u200c"
+  HASHTAG_SEPARATORS = "_\u00B7\u200c\u3001"
   HASHTAG_NAME_RE    = "([[:word:]_][[:word:]#{HASHTAG_SEPARATORS}]*[[:alpha:]#{HASHTAG_SEPARATORS}][[:word:]#{HASHTAG_SEPARATORS}]*[[:word:]_])|([[:word:]_]*[[:alpha:]][[:word:]_]*)"
   HASHTAG_RE         = /(?:^|[^\/\)\w])#(#{HASHTAG_NAME_RE})/i
 

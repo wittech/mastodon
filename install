@@ -11,21 +11,25 @@ firewall-cmd --zone=public --add-port=3000/tcp --permanent
 firewall-cmd --zone=public --add-port=4000/tcp --permanent
 firewall-cmd --reload
 
-chown -R 991:991 public
+#
+docker pull tootsuite/mastodon:edge
+git clone https://github.com/wittech/mastodon.git
 
-cp .env.production.sample .env.production
+#cp .env.production.sample .env.production
 
+docker-compose run --rm web bundle exec rake mastodon:setup
+
+chown -R 991:991 /home/mastodon/public/system
 chmod 777 -R /home/mastodon
 
-npm install
+#npm install
 
-docker-compose up
+#docker-compose up
 
 # docker-compose run --rm web bundle exec rake mastodon:setup
 # 修改了代码后需要重新编译
 # docker-compose run --rm web RAILS_ENV=production bundle exec rails assets:precompile
 
-chown -R 991:991 /home/mastodon/public/system
 
 
 # chmod 777 -R /home/mastodon/elasticsearch
